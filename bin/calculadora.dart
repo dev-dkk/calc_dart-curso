@@ -35,7 +35,7 @@ void main() {
     }
   }
 
-  print("Digite o primeiro valor");
+  print("Digite o primeiro valor:");
   String? entrada = stdin.readLineSync();
   if (entrada != null) {
     if (entrada != "") {

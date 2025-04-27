@@ -44,6 +44,11 @@ void main() {
       if (entrada != null) {
         if (operacoes.contains(entrada)) {
           operacao = entrada!;
+        } else {
+          print(
+            "Por favor escolha uma operação válida ${operacoes.toString()}",
+          );
+          getOperacao();
         }
       }
     }
@@ -89,6 +94,23 @@ void main() {
     }
   }
 
+  void vldCategoria() {
+    List<String> categorias = [
+      'Eletronicos',
+      ' Alimentos',
+      'Vestuário',
+      'Livros',
+    ];
+    String? categoria = "";
+    void slcInput() {
+      print("Digite uma categoria de produto: ${categorias.toString()}");
+      categoria = stdin.readLineSync();
+      print("Categoria válida: $categoria");
+    }
+
+    slcInput();
+  }
+
   void menu_inicial() {
     print("--------------------------------------------------------");
     print("------------------BRINCANDO COM O DART------------------");
@@ -97,6 +119,7 @@ void main() {
     print("--------------------------------------------------------");
     print("- 1 - Calculadora(Soma, Multplicação, Adição e Divisão)-");
     print("- 2 - Verificar Maior Idade (Brasil e EUA) -------------");
+    print("- 3 - Selecionar uma Categoria de Produto --------------");
     print("--------------------------------------------------------");
     print("- 0 - Sair ---------------------------------------------");
     print("--------------------------------------------------------");
@@ -106,6 +129,8 @@ void main() {
         calculadora();
       case 2:
         verificar_maior_idade();
+      case 3:
+        vldCategoria();
         break;
     }
   }

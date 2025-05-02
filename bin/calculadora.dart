@@ -6,7 +6,7 @@ void main() {
     String operacao = "";
     double numero2 = 0;
     String? entrada = "";
-    List<String> operacoes = <String>["+", "-", "*", "/"];
+    List<String> operacoes = <String>["+", "-", "*", "/", "!"];
 
     void soma() {
       print(numero1 + numero2);
@@ -24,6 +24,19 @@ void main() {
       print(numero1 - numero2);
     }
 
+    void fatorial() {
+      double resultado = 1;
+      if (numero1 == 0) {
+        print("1");
+      } else {
+        for (var i = numero1; i > 1; i-- ){
+          resultado *= i;
+        }
+        
+        print(resultado);
+      }
+    }
+
     void calcular() {
       switch (operacao) {
         case "+":
@@ -34,7 +47,19 @@ void main() {
           divisao();
         case "*":
           mult();
+        case "!":
+          fatorial();
           break;
+      }
+    }
+
+    void getValor1() {
+      print("Digite o primeiro valor:");
+      entrada = stdin.readLineSync();
+      if (entrada != null) {
+        if (entrada != "") {
+          numero1 = double.parse(entrada!);
+        }
       }
     }
 
@@ -53,24 +78,20 @@ void main() {
       }
     }
 
-    print("Digite o primeiro valor:");
-    entrada = stdin.readLineSync();
-    if (entrada != null) {
-      if (entrada != "") {
-        numero1 = double.parse(entrada!);
+    void getvalor2() {
+      if (operacao != '!') {
+        print("Digite o segundo valor");
+        entrada = stdin.readLineSync();
+        if (entrada != null) {
+          if (entrada != "") {
+            numero2 = double.parse(entrada!);
+          }
+        }
       }
     }
-
+    getValor1();
     getOperacao();
-
-    print("Digite o segundo valor");
-    entrada = stdin.readLineSync();
-    if (entrada != null) {
-      if (entrada != "") {
-        numero2 = double.parse(entrada!);
-      }
-    }
-
+    getvalor2();
     print("Resultado:");
 
     calcular();

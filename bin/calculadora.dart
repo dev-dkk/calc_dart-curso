@@ -131,8 +131,11 @@ void main() {
 
     slcInput();
   }
+  
 
-  void menu_inicial() {
+  menu_inicial();
+}
+String menu_inicial(){
     print("--------------------------------------------------------");
     print("------------------BRINCANDO COM O DART------------------");
     print("--------------------------------------------------------");
@@ -141,20 +144,17 @@ void main() {
     print("- 1 - Calculadora(Soma, Multplicação, Adição e Divisão)-");
     print("- 2 - Verificar Maior Idade (Brasil e EUA) -------------");
     print("- 3 - Selecionar uma Categoria de Produto --------------");
+    print("- 4 - Notas --------------------------------------------");
     print("--------------------------------------------------------");
     print("- 0 - Sair ---------------------------------------------");
     print("--------------------------------------------------------");
-    int opc = int.parse(stdin.readLineSync()!);
-    switch (opc) {
-      case 1:
-        calculadora();
-      case 2:
-        verificar_maior_idade();
-      case 3:
-        vldCategoria();
-        break;
+    List<String> comando =  <String>['1','2','3','4','0'];
+    String? opc= "";
+    opc= stdin.readLineSync();
+    if (opc== null || !comando.contains(opc)){
+      print("Opção inválida");
+      menu_inicial();
     }
-  }
-
-  menu_inicial();
+    return opc!;
+    
 }
